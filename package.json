@@ -1,0 +1,26 @@
+{
+  "name": "api-prototyping",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinlanzon/api-prototyping.git"
+  },
+  "author": "Kevin Lanzon <kevinlanzon@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinlanzon/api-prototyping/issues"
+  },
+  "homepage": "https://github.com/kevinlanzon/api-prototyping#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "express-winston": "^2.6.0",
+    "os": "^0.1.1",
+    "winston": "^2.4.3"
+  }
+}
