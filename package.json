@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js",
+    "test": "mocha -R spec $(find . -name '*.spec.js' ! -ipath '*node_modules*')"
   },
   "repository": {
     "type": "git",
@@ -17,10 +18,12 @@
   },
   "homepage": "https://github.com/kevinlanzon/api-prototyping#readme",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "express-winston": "^2.6.0",
-    "os": "^0.1.1",
-    "winston": "^2.4.3"
+    "body-parser": "1.18.3",
+    "dotenv": "6.0.0",
+    "express": "4.16.3",
+    "express-winston": "2.6.0",
+    "nodemon": "1.18.3",
+    "os": "0.1.1",
+    "winston": "2.4.3"
   }
 }

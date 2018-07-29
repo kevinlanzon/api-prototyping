@@ -1,3 +1,6 @@
+'use strict';
+
+const http = require('http');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -5,7 +8,12 @@ const { logger, logTransports } = require('./lib/logger')();
 const expressWinston = require('express-winston');
 const os = require('os');
 
-const PORT = process.env.PORT || 3000;
+require('dotenv').load({
+  path: '.env',
+  sample: '.env-sample'
+});
+
+const PORT = process.env.PORT;
 
 const hostname = os.hostname();
 
@@ -22,6 +30,23 @@ app.use(bodyParser.json());
 
 app.use(expressWinston.logger(loggerOpts));
 
+// The locals variables response and aux will be used in
+// every request, this middleware helps to prepare the object.
+app.use((req, res, next) => {
+  res.locals.response = [];
+  res.locals.aux = {};
+  return next();
+});
+
 app.get('/', (req, res) => res.send('Hello World!'));
 
-app.listen(PORT, () => logger.info(`Example app listening on port ${PORT}!`));
+// Start the server
+http.createServer(app).listen(process.env.PORT, (err) => {
+  if (err) {
+    logger.error(`The server is unable to listen on port ${process.env.PORT}`, err);
+    return;
+  }
+
+  logger.info(`The server started succesfully on port: ${process.env.PORT}`);
+
+});
